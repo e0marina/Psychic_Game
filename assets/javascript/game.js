@@ -59,14 +59,14 @@ document.onkeyup = function(event) {
   } else {
     guessesLeft--;
   }
-
+  //test if it's working
   console.log(userGuess);
   console.log(wins);
   console.log(losses);
 
   //Display the wins, losses, guesses left, list guesses so far
-  winsText.textContent = +wins;
-  lossesText.textContent = +losses;
-  guessesLeft.textContent = +guessesLeft;
+  winsText.textContent = "wins:" + wins;
+  lossesText.textContent = "losses" + losses;
+  guessesText.textContent = "Guesses Left" + guessesLeft;
   //alreadyGuessedText.textContent = "Already Guessed" + userGuess;
 };
