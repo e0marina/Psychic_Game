@@ -34,7 +34,7 @@ computerChoice = [
 //Create variables to hold number of wins, losses, guesses left, guesses so far
 var wins = 0;
 var losses = 0;
-var guessesLeft = 0;
+var guessesLeft = 10;
 var guessesSoFar = 0;
 
 // Create variables that hold references to the places in the HTML where we want to display things.
@@ -57,6 +57,16 @@ document.onkeyup = function(event) {
   if (userGuess === computerGuess) {
     wins++;
   } else {
-    losses++;
+    guessesLeft--;
   }
+
+  console.log(userGuess);
+  console.log(wins);
+  console.log(losses);
+
+  //Display the wins, losses, guesses left, list guesses so far
+  winsText.textContent = +wins;
+  lossesText.textContent = +losses;
+  guessesLeft.textContent = +guessesLeft;
+  //alreadyGuessedText.textContent = "Already Guessed" + userGuess;
 };
