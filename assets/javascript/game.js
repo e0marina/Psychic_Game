@@ -59,6 +59,7 @@ document.onkeyup = function(event) {
   } else {
     guessesLeft--;
   }
+
   //test if it's working
   console.log(userGuess);
   console.log(wins);
@@ -67,11 +68,11 @@ document.onkeyup = function(event) {
   //Display the wins, losses, guesses left, list guesses so far
   winsText.textContent = "wins:" + wins;
   lossesText.textContent = "losses:" + losses;
-  guessesText.textContent = "Guesses Left:" + guessesLeft;
+  guessesText.textContent = "guesses left:" + guessesLeft;
   //alreadyGuessedText.textContent = "Already Guessed" + userGuess;
 };
 
 //to do:
 //make sure counter of guesses left doesn't go negative, once 0
 //    reached, reset without refresh so user can play again
-//display text at get-go
+//list letters that have already been guessed
