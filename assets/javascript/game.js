@@ -49,19 +49,10 @@ var alreadyGuessedText = document.getElementById("already-guessed");
 document.onkeyup = function(event) {
   //Determines which key was pressed.
   var userGuess = event.key;
-
   //We are only interested in a-z letter keys
-
-  function allLetter (inputtxt) {
-   var letters = /^[A-Za-z]+$/;
-   if(inputtxt.value.match(letters))
-     {
-   
-  }
+  //
 
   //concatenates the user's guesses under already guessed
-  //for (i = 0; i < 10; i++) {} <-- not sure if I need this
-  //document.getElementById("already-guessed").innerHTML += userGuess;
 
   // Randomly chooses a choice from the options array. This is Computer's Guess
   var computerGuess =
@@ -73,20 +64,23 @@ document.onkeyup = function(event) {
     guessesLeft--;
   }
 
+  //concatenates the user's guesses under already guessed, as guesses > 0
   if (guessesLeft > 0) {
     document.getElementById("already-guessed").innerHTML += userGuess;
   }
 
-  //want losses to increase once guesses hits 0 and
+  //want losses to increase once guesses hits 0
   //guesses to go back to start and already guessed to clear
   if (guessesLeft === 0) {
     losses++;
   }
 
+  //guesses to go back to 10 and already guessed to clear
+
   //test if it's working
-  console.log(userGuess);
-  console.log(wins);
-  console.log(losses);
+  //console.log(userGuess);
+  //console.log(wins);
+  //console.log(losses);
 
   //Display the wins, losses, guesses left, list guesses so far
   winsText.textContent = "wins: " + wins;
@@ -99,4 +93,3 @@ document.onkeyup = function(event) {
 //make sure counter of guesses left doesn't go negative, once 0
 //    reached, reset without refresh so user can play again
 //also reset counter when there is a win.
-//list letters that have already been guessed
