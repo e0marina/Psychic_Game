@@ -45,16 +45,17 @@ var guessesText = document.getElementById("guesses");
 var alreadyGuessedText = document.getElementById("already-guessed");
 // FUNCTIONS
 // ==============================================================================
+// ?initialize the game for first time (comes in handy when need to reset guess counter), place values that need to reset inside
+
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
   //Determines which key was pressed.
   var userGuess = event.key;
-  //We are only interested in a-z letter keys
+  //?We are only interested in a-z letter keys
   //
 
-  //concatenates the user's guesses under already guessed
-
   // Randomly chooses a choice from the options array. This is Computer's Guess
+  //**want this to happen when load page originally (needs to come out of key up)
   var computerGuess =
     computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
@@ -62,22 +63,23 @@ document.onkeyup = function(event) {
     wins++;
   } else {
     guessesLeft--;
-  }
-
-  //concatenates the user's guesses under already guessed, as guesses > 0
-  if (guessesLeft > 0) {
     document.getElementById("already-guessed").innerHTML += userGuess;
   }
+  //concatenates the user's guesses under already guessed, as guesses > 0
+  //doesn't need to be in if
+  // if (guessesLeft > 0) {
+  //   document.getElementById("already-guessed").innerHTML += userGuess;
+  // }
 
-  //want losses to increase once guesses hits 0 and already guessed to clear
+  // losses increase once guesses hits 0 and already guessed clears
   if (guessesLeft === 0) {
     losses++;
     alreadyGuessedText.textContent = "already guessed: " + "";
   }
 
   //**reset guessesLeft so user can play again <--this code doesn't work
-  //for (i = 0; i < guessesLeft.length; i++) {
-  //  var reGuess = guessesLeft[i];
+  //for (i = 0; i < 10; i++) {
+  // var reGuess = guessesLeft[i];
   //}
 
   //Display the wins, losses, guesses left, list guesses so far
@@ -85,9 +87,17 @@ document.onkeyup = function(event) {
   lossesText.textContent = "losses: " + losses;
   guessesText.textContent = "guesses left: " + guessesLeft;
   //alreadyGuessedText.textContent = "already guessed: " + userGuess;
+
+  //another reset attempt
+  //if (guessesLeft === 0 || wins >= 1) {
+  //inititalize();
+  //}
 };
 
 //to do:
 //make sure counter of guesses left doesn't go negative, once 0
 //    reached, reset without refresh so user can play again
 //also reset counter when there is a win.
+
+//ideas:
+//perhaps an array for counter for letters guessed would help with resetting the game?
