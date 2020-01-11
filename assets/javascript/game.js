@@ -43,21 +43,43 @@ var winsText = document.getElementById("wins");
 var lossesText = document.getElementById("losses");
 var guessesText = document.getElementById("guesses");
 var alreadyGuessedText = document.getElementById("already-guessed");
+
 // FUNCTIONS
 // ==============================================================================
 // ?initialize the game for first time (comes in handy when need to reset guess counter), place values that need to reset inside
+//listens for enter (13) can't be inside another func
+document.addEventListener("keypress", function(event) {
+  //console.log(document.getElementById("already-guessed"));
+  switch (event.keyCode) {
+    case 97:
+      console.log("a");
+      keyPressFunction("a");
+      break;
+    case 98:
+      console.log("b");
+      keyPressFunction("b");
+      break;
+    case 99:
+      console.log("c");
+      keyPressFunction("c");
+      break;
+    case 99:
+      console.log("c");
+      keyPressFunction("c");
+      break;
 
+    default:
+      break;
+  }
+});
+// Randomly chooses a choice from the options array. This is Computer's Guess
+var computerGuess =
+  computerChoice[Math.floor(Math.random() * computerChoice.length)];
+//Determines which key was pressed.
 // This function is run whenever the user presses a key.
-document.onkeyup = function(event) {
-  //Determines which key was pressed.
-  var userGuess = event.key;
+function keyPressFunction(userGuess) {
   //?We are only interested in a-z letter keys
-  //
-
-  // Randomly chooses a choice from the options array. This is Computer's Guess
-  //**want this to happen when load page originally (needs to come out of key up)
-  var computerGuess =
-    computerChoice[Math.floor(Math.random() * computerChoice.length)];
+  //can check for each key code but would have to write out switch statement.
 
   if (userGuess === computerGuess) {
     wins++;
@@ -65,34 +87,20 @@ document.onkeyup = function(event) {
     guessesLeft--;
     document.getElementById("already-guessed").innerHTML += userGuess;
   }
-  //concatenates the user's guesses under already guessed, as guesses > 0
-  //doesn't need to be in if
-  // if (guessesLeft > 0) {
-  //   document.getElementById("already-guessed").innerHTML += userGuess;
-  // }
 
   // losses increase once guesses hits 0 and already guessed clears
   if (guessesLeft === 0) {
     losses++;
     alreadyGuessedText.textContent = "already guessed: " + "";
+    guessesLeft = 10;
   }
-
-  //**reset guessesLeft so user can play again <--this code doesn't work
-  //for (i = 0; i < 10; i++) {
-  // var reGuess = guessesLeft[i];
-  //}
 
   //Display the wins, losses, guesses left, list guesses so far
   winsText.textContent = "wins: " + wins;
   lossesText.textContent = "losses: " + losses;
   guessesText.textContent = "guesses left: " + guessesLeft;
   //alreadyGuessedText.textContent = "already guessed: " + userGuess;
-
-  //another reset attempt
-  //if (guessesLeft === 0 || wins >= 1) {
-  //inititalize();
-  //}
-};
+}
 
 //to do:
 //make sure counter of guesses left doesn't go negative, once 0
