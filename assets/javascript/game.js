@@ -69,13 +69,13 @@ document.onkeyup = function(event) {
     document.getElementById("already-guessed").innerHTML += userGuess;
   }
 
-  //want losses to increase once guesses hits 0
-  //guesses to go back to start and already guessed to clear
+  //want losses to increase once guesses hits 0 and already guessed to clear
   if (guessesLeft === 0) {
     losses++;
+    alreadyGuessedText.textContent = "already guessed: " + "";
   }
 
-  //guesses to go back to 10 and already guessed to clear
+  //guesses to go back to 10
 
   //test if it's working
   //console.log(userGuess);
