@@ -75,12 +75,10 @@ document.onkeyup = function(event) {
     alreadyGuessedText.textContent = "already guessed: " + "";
   }
 
-  //guesses to go back to 10
-
-  //test if it's working
-  //console.log(userGuess);
-  //console.log(wins);
-  //console.log(losses);
+  //**reset guessesLeft so user can play again <--this code doesn't work
+  //for (i = 0; i < guessesLeft.length; i++) {
+  //  var reGuess = guessesLeft[i];
+  //}
 
   //Display the wins, losses, guesses left, list guesses so far
   winsText.textContent = "wins: " + wins;
