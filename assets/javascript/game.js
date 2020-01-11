@@ -52,6 +52,13 @@ document.onkeyup = function(event) {
 
   //We are only interested in a-z letter keys
 
+  function allLetter (inputtxt) {
+   var letters = /^[A-Za-z]+$/;
+   if(inputtxt.value.match(letters))
+     {
+   
+  }
+
   //concatenates the user's guesses under already guessed
   //for (i = 0; i < 10; i++) {} <-- not sure if I need this
   //document.getElementById("already-guessed").innerHTML += userGuess;
@@ -66,12 +73,14 @@ document.onkeyup = function(event) {
     guessesLeft--;
   }
 
-  if (guessesLeft === 0) {
-    losses++;
-  }
-
   if (guessesLeft > 0) {
     document.getElementById("already-guessed").innerHTML += userGuess;
+  }
+
+  //want losses to increase once guesses hits 0 and
+  //guesses to go back to start and already guessed to clear
+  if (guessesLeft === 0) {
+    losses++;
   }
 
   //test if it's working
