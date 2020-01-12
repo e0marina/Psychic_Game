@@ -49,7 +49,6 @@ var alreadyGuessedText = document.getElementById("already-guessed");
 
 //listens for alpha key presses, since we are only interested in alpha characters
 document.addEventListener("keypress", function(event) {
-  //console.log(document.getElementById("already-guessed"));
   switch (event.keyCode) {
     case 97:
       console.log("a");
@@ -163,12 +162,9 @@ document.addEventListener("keypress", function(event) {
 // Randomly chooses a choice from the options array. This is Computer's Guess
 var computerGuess =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
-//Determines which key was pressed.
-// This function is run whenever the user presses a key.
-function keyPressFunction(userGuess) {
-  //?We are only interested in a-z letter keys
-  //can check for each key code but would have to write out switch statement.
 
+// This function is run whenever the user presses a key. Also, displays already-guessed
+function keyPressFunction(userGuess) {
   if (userGuess === computerGuess) {
     wins++;
   } else {
@@ -176,7 +172,7 @@ function keyPressFunction(userGuess) {
     document.getElementById("already-guessed").innerHTML += userGuess;
   }
 
-  // losses increase once guesses hits 0 and already guessed clears
+  // losses increase once guesses hits 0 and already-guessed goes back to 10
   if (guessesLeft === 0) {
     losses++;
     alreadyGuessedText.textContent = "already guessed: " + "";
@@ -187,13 +183,4 @@ function keyPressFunction(userGuess) {
   winsText.textContent = "wins: " + wins;
   lossesText.textContent = "losses: " + losses;
   guessesText.textContent = "guesses left: " + guessesLeft;
-  //alreadyGuessedText.textContent = "already guessed: " + userGuess;
 }
-
-//to do:
-//make sure counter of guesses left doesn't go negative, once 0
-//    reached, reset without refresh so user can play again
-//also reset counter when there is a win.
-
-//ideas:
-//perhaps an array for counter for letters guessed would help with resetting the game?
