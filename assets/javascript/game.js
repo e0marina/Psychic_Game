@@ -31,11 +31,10 @@ computerChoice = [
 //VARIABLES
 //===============================================================================
 
-//Create variables to hold number of wins, losses, guesses left, guesses so far
+//Create variables to hold number of wins, losses, guesses left
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
-var guessesSoFar = 0;
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 var directionsText = document.getElementById("directions-text");
